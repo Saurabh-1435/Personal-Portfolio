@@ -1,0 +1,59 @@
+package com.portfolio.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "experiences")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Experience {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "company_name", nullable = false)
+    private String companyName;
+
+    private String position;
+
+    @Column(name = "employment_type")
+    private String employmentType;
+
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
+
+    @Column(name = "currently_working")
+    private Boolean currentlyWorking;
+
+    private String location;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column(name = "company_url")
+    private String companyUrl;
+
+    @Column(name = "sort_order")
+    private Integer sortOrder;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+}
